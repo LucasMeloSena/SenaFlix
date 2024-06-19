@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		11E8B8C17C8706D0CD9D312F /* Pods_SenaFlix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */; };
+		ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205C9A2C21BDB900C820E8 /* AppDelegate.swift */; };
+		ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205C9C2C21BDB900C820E8 /* SceneDelegate.swift */; };
+		ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED205CA32C21BDB900C820E8 /* SenaFlix.xcdatamodeld */; };
+		ED205CA72C21BDBA00C820E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED205CA62C21BDBA00C820E8 /* Assets.xcassets */; };
+		ED205CBE2C21C67E00C820E8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205CBD2C21C67E00C820E8 /* HomeViewController.swift */; };
+		ED205CC02C21C82F00C820E8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205CBF2C21C82F00C820E8 /* HomeViewModel.swift */; };
+		ED205CC32C21D12100C820E8 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205CC22C21D12100C820E8 /* SplashViewController.swift */; };
+		ED205CC52C21D2FE00C820E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205CC42C21D2FE00C820E8 /* Constants.swift */; };
+		EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA679492C235E3900DD8BE9 /* CoreLabel.swift */; };
+		EDA679542C23657C00DD8BE9 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA6794B2C23657C00DD8BE9 /* Poppins-Bold.ttf */; };
+		EDA679552C23657C00DD8BE9 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA6794C2C23657C00DD8BE9 /* Poppins-ExtraBold.ttf */; };
+		EDA679562C23657C00DD8BE9 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA6794D2C23657C00DD8BE9 /* Poppins-ExtraLight.ttf */; };
+		EDA679572C23657C00DD8BE9 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA6794E2C23657C00DD8BE9 /* Poppins-Light.ttf */; };
+		EDA679582C23657C00DD8BE9 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA6794F2C23657C00DD8BE9 /* Poppins-Medium.ttf */; };
+		EDA679592C23657C00DD8BE9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679502C23657C00DD8BE9 /* Poppins-Regular.ttf */; };
+		EDA6795A2C23657C00DD8BE9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679512C23657C00DD8BE9 /* Poppins-SemiBold.ttf */; };
+		EDA6795B2C23657C00DD8BE9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		226CD7FF9DEF80C1D22D2590 /* Pods-SenaFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenaFlix.debug.xcconfig"; path = "Target Support Files/Pods-SenaFlix/Pods-SenaFlix.debug.xcconfig"; sourceTree = "<group>"; };
+		91129466F48C9FEF8C9C5F1F /* Pods-SenaFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenaFlix.release.xcconfig"; path = "Target Support Files/Pods-SenaFlix/Pods-SenaFlix.release.xcconfig"; sourceTree = "<group>"; };
+		ED205C972C21BDB900C820E8 /* SenaFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenaFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED205C9A2C21BDB900C820E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED205C9C2C21BDB900C820E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED205CA42C21BDB900C820E8 /* SenaFlix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SenaFlix.xcdatamodel; sourceTree = "<group>"; };
+		ED205CA62C21BDBA00C820E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED205CAB2C21BDBA00C820E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED205CBD2C21C67E00C820E8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ED205CBF2C21C82F00C820E8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		ED205CC22C21D12100C820E8 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		ED205CC42C21D2FE00C820E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EDA679492C235E3900DD8BE9 /* CoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLabel.swift; sourceTree = "<group>"; };
+		EDA6794B2C23657C00DD8BE9 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		EDA6794C2C23657C00DD8BE9 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		EDA6794D2C23657C00DD8BE9 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		EDA6794E2C23657C00DD8BE9 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		EDA6794F2C23657C00DD8BE9 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		EDA679502C23657C00DD8BE9 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		EDA679512C23657C00DD8BE9 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenaFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED205C942C21BDB900C820E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E8B8C17C8706D0CD9D312F /* Pods_SenaFlix.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24A0799593D661F0CB54882B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED205C8E2C21BDB900C820E8 = {
+			isa = PBXGroup;
+			children = (
+				ED205C992C21BDB900C820E8 /* SenaFlix */,
+				ED205C982C21BDB900C820E8 /* Products */,
+				F77ED9DAB435372FE29B532F /* Pods */,
+				24A0799593D661F0CB54882B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ED205C982C21BDB900C820E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED205C972C21BDB900C820E8 /* SenaFlix.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED205C992C21BDB900C820E8 /* SenaFlix */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CBA2C21C41D00C820E8 /* Assets */,
+				ED205CB92C21C3C000C820E8 /* Application */,
+				ED205CB62C21C13D00C820E8 /* Domain */,
+				ED205CB22C21C10000C820E8 /* Data */,
+				ED205CB12C21C0DB00C820E8 /* View */,
+			);
+			path = SenaFlix;
+			sourceTree = "<group>";
+		};
+		ED205CB12C21C0DB00C820E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CBC2C21C4B800C820E8 /* CoreUI */,
+				ED205CBB2C21C4AF00C820E8 /* Features */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED205CB22C21C10000C820E8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CB42C21C10C00C820E8 /* PersistentStorage */,
+				ED205CB32C21C10600C820E8 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		ED205CB32C21C10600C820E8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ED205CB42C21C10C00C820E8 /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CA32C21BDB900C820E8 /* SenaFlix.xcdatamodeld */,
+			);
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		ED205CB52C21C11B00C820E8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CBD2C21C67E00C820E8 /* HomeViewController.swift */,
+				ED205CBF2C21C82F00C820E8 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ED205CB62C21C13D00C820E8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CB82C21C33800C820E8 /* Entities */,
+				ED205CB72C21C33200C820E8 /* Protocols */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		ED205CB72C21C33200C820E8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ED205CB82C21C33800C820E8 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CC42C21D2FE00C820E8 /* Constants.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		ED205CB92C21C3C000C820E8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ED205C9A2C21BDB900C820E8 /* AppDelegate.swift */,
+				ED205C9C2C21BDB900C820E8 /* SceneDelegate.swift */,
+				ED205CAB2C21BDBA00C820E8 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ED205CBA2C21C41D00C820E8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6793F2C235BEB00DD8BE9 /* Fonts */,
+				ED205CA62C21BDBA00C820E8 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		ED205CBB2C21C4AF00C820E8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CC12C21D01A00C820E8 /* Splash */,
+				ED205CB52C21C11B00C820E8 /* Home */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ED205CBC2C21C4B800C820E8 /* CoreUI */ = {
+			isa = PBXGroup;
+			children = (
+				EDA679482C235E0F00DD8BE9 /* CoreLabel */,
+			);
+			path = CoreUI;
+			sourceTree = "<group>";
+		};
+		ED205CC12C21D01A00C820E8 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				ED205CC22C21D12100C820E8 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		EDA6793F2C235BEB00DD8BE9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EDA679532C23657C00DD8BE9 /* Poppins */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EDA679482C235E0F00DD8BE9 /* CoreLabel */ = {
+			isa = PBXGroup;
+			children = (
+				EDA679492C235E3900DD8BE9 /* CoreLabel.swift */,
+			);
+			path = CoreLabel;
+			sourceTree = "<group>";
+		};
+		EDA679532C23657C00DD8BE9 /* Poppins */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6794B2C23657C00DD8BE9 /* Poppins-Bold.ttf */,
+				EDA6794C2C23657C00DD8BE9 /* Poppins-ExtraBold.ttf */,
+				EDA6794D2C23657C00DD8BE9 /* Poppins-ExtraLight.ttf */,
+				EDA6794E2C23657C00DD8BE9 /* Poppins-Light.ttf */,
+				EDA6794F2C23657C00DD8BE9 /* Poppins-Medium.ttf */,
+				EDA679502C23657C00DD8BE9 /* Poppins-Regular.ttf */,
+				EDA679512C23657C00DD8BE9 /* Poppins-SemiBold.ttf */,
+				EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */,
+			);
+			path = Poppins;
+			sourceTree = "<group>";
+		};
+		F77ED9DAB435372FE29B532F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				226CD7FF9DEF80C1D22D2590 /* Pods-SenaFlix.debug.xcconfig */,
+				91129466F48C9FEF8C9C5F1F /* Pods-SenaFlix.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED205C962C21BDB900C820E8 /* SenaFlix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED205CAE2C21BDBA00C820E8 /* Build configuration list for PBXNativeTarget "SenaFlix" */;
+			buildPhases = (
+				FCF05D7556FFFB88321007C4 /* [CP] Check Pods Manifest.lock */,
+				ED205C932C21BDB900C820E8 /* Sources */,
+				ED205C942C21BDB900C820E8 /* Frameworks */,
+				ED205C952C21BDB900C820E8 /* Resources */,
+				E688ED8A5B4E63A88CAB236F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SenaFlix;
+			productName = SenaFlix;
+			productReference = ED205C972C21BDB900C820E8 /* SenaFlix.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED205C8F2C21BDB900C820E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					ED205C962C21BDB900C820E8 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = ED205C922C21BDB900C820E8 /* Build configuration list for PBXProject "SenaFlix" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED205C8E2C21BDB900C820E8;
+			productRefGroup = ED205C982C21BDB900C820E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED205C962C21BDB900C820E8 /* SenaFlix */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED205C952C21BDB900C820E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA679562C23657C00DD8BE9 /* Poppins-ExtraLight.ttf in Resources */,
+				EDA679572C23657C00DD8BE9 /* Poppins-Light.ttf in Resources */,
+				EDA679592C23657C00DD8BE9 /* Poppins-Regular.ttf in Resources */,
+				EDA6795B2C23657C00DD8BE9 /* Poppins-Thin.ttf in Resources */,
+				ED205CA72C21BDBA00C820E8 /* Assets.xcassets in Resources */,
+				EDA679582C23657C00DD8BE9 /* Poppins-Medium.ttf in Resources */,
+				EDA6795A2C23657C00DD8BE9 /* Poppins-SemiBold.ttf in Resources */,
+				EDA679552C23657C00DD8BE9 /* Poppins-ExtraBold.ttf in Resources */,
+				EDA679542C23657C00DD8BE9 /* Poppins-Bold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E688ED8A5B4E63A88CAB236F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenaFlix/Pods-SenaFlix-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenaFlix/Pods-SenaFlix-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenaFlix/Pods-SenaFlix-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCF05D7556FFFB88321007C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SenaFlix-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED205C932C21BDB900C820E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED205CC02C21C82F00C820E8 /* HomeViewModel.swift in Sources */,
+				ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */,
+				ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */,
+				EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */,
+				ED205CC32C21D12100C820E8 /* SplashViewController.swift in Sources */,
+				ED205CC52C21D2FE00C820E8 /* Constants.swift in Sources */,
+				ED205CBE2C21C67E00C820E8 /* HomeViewController.swift in Sources */,
+				ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ED205CAC2C21BDBA00C820E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED205CAD2C21BDBA00C820E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED205CAF2C21BDBA00C820E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 226CD7FF9DEF80C1D22D2590 /* Pods-SenaFlix.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SenaFlix/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.lucasena.SenaFlix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED205CB02C21BDBA00C820E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91129466F48C9FEF8C9C5F1F /* Pods-SenaFlix.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SenaFlix/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.lucasena.SenaFlix;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED205C922C21BDB900C820E8 /* Build configuration list for PBXProject "SenaFlix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED205CAC2C21BDBA00C820E8 /* Debug */,
+				ED205CAD2C21BDBA00C820E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED205CAE2C21BDBA00C820E8 /* Build configuration list for PBXNativeTarget "SenaFlix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED205CAF2C21BDBA00C820E8 /* Debug */,
+				ED205CB02C21BDBA00C820E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED205CA32C21BDB900C820E8 /* SenaFlix.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED205CA42C21BDB900C820E8 /* SenaFlix.xcdatamodel */,
+			);
+			currentVersion = ED205CA42C21BDB900C820E8 /* SenaFlix.xcdatamodel */;
+			path = SenaFlix.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = ED205C8F2C21BDB900C820E8 /* Project object */;
+}
