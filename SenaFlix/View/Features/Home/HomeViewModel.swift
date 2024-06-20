@@ -7,12 +7,17 @@
 
 import Foundation
 
+enum MovieType {
+    case popular
+    case topRated
+}
+
 protocol MovieManagerDelegate {
-    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie])
+    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie], _ movieType: MovieType)
     func didHaveAnError(_ error: Error)
 }
 
-struct Response: Codable {
+struct MovieResponse: Codable {
     let page: Int
     let results: [Results]
     let total_pages: Int
@@ -44,26 +49,21 @@ struct Movie {
 
 struct MovieManager {
     let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
-    let baseUrl = "https://api.themoviedb.org/3/discover/movie?language=pt-br&page=1&sort_by=popularity.desc&api_key="
     let baseImageUrl = "https://image.tmdb.org/t/p/w500"
     var delegate: MovieManagerDelegate?
     
-    func fetchTrendingMovies() {
-        let urlString = "\(baseUrl)\(api_key)"
-        if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
-                if (error != nil) {
-                    delegate?.didHaveAnError(error!)
-                    return
-                }
-                if let safeData = data {
-                    if let movie = self.parseJSON(from: safeData) {
-                        self.delegate?.didUpdateData(self, movie)
-                    }
+    func fetchMovies(from baseUrl: String, type: MovieType) {
+        let request = CoreRequest(url: baseUrl, api_key: api_key)
+        request.fetchData() { response in
+            if response.error != nil {
+                delegate?.didHaveAnError(response.error!)
+                return
+            }
+            else if response.data != nil {
+                if let movie = parseJSON(from: response.data!) {
+                    delegate?.didUpdateData(self, movie, type)
                 }
             }
-            task.resume()
         }
     }
     
@@ -71,7 +71,7 @@ struct MovieManager {
         let decoder = JSONDecoder()
         var movies: [Movie] = []
         do {
-            let decodedData = try decoder.decode(Response.self, from: data)
+            let decodedData = try decoder.decode(MovieResponse.self, from: data)
             for movie in decodedData.results {
                 let id = movie.id
                 let name = movie.title

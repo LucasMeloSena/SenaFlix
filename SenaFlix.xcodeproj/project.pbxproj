@@ -25,6 +25,8 @@
 		EDA679592C23657C00DD8BE9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679502C23657C00DD8BE9 /* Poppins-Regular.ttf */; };
 		EDA6795A2C23657C00DD8BE9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679512C23657C00DD8BE9 /* Poppins-SemiBold.ttf */; };
 		EDA6795B2C23657C00DD8BE9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */; };
+		EDBBB42C2C236F6A00209406 /* CoreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42B2C236F6A00209406 /* CoreRequest.swift */; };
+		EDBBB42F2C236FA500209406 /* CoreStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42E2C236FA500209406 /* CoreStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		EDA679502C23657C00DD8BE9 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		EDA679512C23657C00DD8BE9 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		EDBBB42B2C236F6A00209406 /* CoreRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRequest.swift; sourceTree = "<group>"; };
+		EDBBB42E2C236FA500209406 /* CoreStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStack.swift; sourceTree = "<group>"; };
 		EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenaFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +127,7 @@
 		ED205CB32C21C10600C820E8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EDBBB42B2C236F6A00209406 /* CoreRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		ED205CBC2C21C4B800C820E8 /* CoreUI */ = {
 			isa = PBXGroup;
 			children = (
+				EDBBB42D2C236F7D00209406 /* CoreStack */,
 				EDA679482C235E0F00DD8BE9 /* CoreLabel */,
 			);
 			path = CoreUI;
@@ -241,6 +247,14 @@
 				EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */,
 			);
 			path = Poppins;
+			sourceTree = "<group>";
+		};
+		EDBBB42D2C236F7D00209406 /* CoreStack */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB42E2C236FA500209406 /* CoreStack.swift */,
+			);
+			path = CoreStack;
 			sourceTree = "<group>";
 		};
 		F77ED9DAB435372FE29B532F /* Pods */ = {
@@ -379,6 +393,8 @@
 				EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */,
 				ED205CC32C21D12100C820E8 /* SplashViewController.swift in Sources */,
 				ED205CC52C21D2FE00C820E8 /* Constants.swift in Sources */,
+				EDBBB42C2C236F6A00209406 /* CoreRequest.swift in Sources */,
+				EDBBB42F2C236FA500209406 /* CoreStack.swift in Sources */,
 				ED205CBE2C21C67E00C820E8 /* HomeViewController.swift in Sources */,
 				ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */,
 			);

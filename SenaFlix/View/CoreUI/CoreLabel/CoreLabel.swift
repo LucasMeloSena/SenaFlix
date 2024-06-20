@@ -38,9 +38,9 @@ class CoreLabel: UILabel {
     func applyStyle() {
         switch type {
         case .title:
-            self.font = UIFont(name: "Poppins-Bold", size: 20)
+            self.font = UIFont(name: "Poppins-Bold", size: 30)
         case .subTitle:
-            self.font = UIFont(name: "Poppins-Medium", size: 18)
+            self.font = UIFont(name: "Poppins-SemiBold", size: 22)
         case .text:
             self.font = UIFont(name: "Poppins-Regular", size: 16)
         case .slowText:

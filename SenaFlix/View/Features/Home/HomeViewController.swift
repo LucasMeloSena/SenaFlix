@@ -27,23 +27,7 @@ class HomeViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var labelCategory = CoreLabel(type: .title, color: .white, content: "Populares")
-    
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-    
-    private lazy var stackViewPosters: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var labelGloboPlay = CoreLabel(type: .title, color: .white, content: "globoplay")
     
     //MARK: - ACTIONS
     var movieManager = MovieManager()
@@ -53,15 +37,13 @@ class HomeViewController: UIViewController {
         setup()
         loadContraints()
         movieManager.delegate = self
-        movieManager.fetchTrendingMovies()
+        requestMoviesData()
     }
     
     private func setup() {
         view.addSubview(containerView)
+        containerView.addSubview(labelGloboPlay)
         containerView.addSubview(stackViewTitlePoster)
-        stackViewTitlePoster.addArrangedSubview(labelCategory)
-        containerView.addSubview(scrollView)
-        scrollView.addSubview(stackViewPosters)
     }
     
     private func loadContraints() {
@@ -72,62 +54,45 @@ class HomeViewController: UIViewController {
             make.bottom.equalTo(0)
         }
         
-        scrollView.snp.makeConstraints{(make) -> Void in
-            make.leading.equalTo(0)
-            make.trailing.equalTo(0)
-            make.top.equalTo(100)
-            make.bottom.equalTo(0)
+        labelGloboPlay.snp.makeConstraints { make in
+            make.top.equalTo(containerView.safeAreaLayoutGuide).offset(10)
+            make.centerX.equalToSuperview()
         }
         
         stackViewTitlePoster.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
-            make.leading.equalTo(10)
-        }
-        
-        stackViewPosters.snp.makeConstraints { make in
+            make.top.equalTo(labelGloboPlay.snp_bottomMargin).offset(20)
             make.leading.equalTo(10)
             make.trailing.equalTo(0)
-            make.top.equalTo(0)
             make.bottom.equalTo(0)
         }
     }
     
-    private func populateStackView(movies: [Movie]) {
-        for movie in movies {
-            guard let url = URL(string: movie.backdrop_path) else {
-                fatalError("Invalid URL string.")
-            }
-            
-            DispatchQueue.global().async {
-                do {
-                    let data = try Data(contentsOf: url)
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            let imageView = UIImageView()
-                            imageView.translatesAutoresizingMaskIntoConstraints = false
-                            imageView.image = image
-                            imageView.snp.makeConstraints {(make) -> Void in
-                                make.width.equalTo(150)
-                                make.height.equalTo(200)
-                            }
-                            
-                            self.stackViewPosters.addArrangedSubview(imageView)
-                        }
-                    } else {
-                        print("Failed to create image from data")
-                    }
-                } catch {
-                    print("Failed to load data from URL, \(error.localizedDescription)")
-                }
-            }
-        }
+    private func requestMoviesData() {
+        let popularUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-br&page=1&api_key="
+        movieManager.fetchMovies(from: popularUrl, type: .popular)
+        
+        let topRatedUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-br&page=1&api_key="
+        movieManager.fetchMovies(from: topRatedUrl, type: .topRated)
+    }
+    
+    private func populateView(movies: [Movie]) {
+        let coreStack = CoreStack(stackViewTitlePoster: stackViewTitlePoster, movies: movies)
+        coreStack.populateStackView()
     }
     
 }
 
+
 extension HomeViewController: MovieManagerDelegate {
-    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie]) {
-        populateStackView(movies: movieModel)
+    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie], _ movieType: MovieType) {
+        if (movieType == .popular) {
+            print("Populares")
+            populateView(movies: movieModel)
+        }
+        else if (movieType == .topRated) {
+            print("Bem avaliados")
+            populateView(movies: movieModel)
+        }
     }
     
     func didHaveAnError(_ error: any Error) {
