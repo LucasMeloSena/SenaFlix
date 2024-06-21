@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class SplashViewController: UIViewController {
     
@@ -51,9 +52,7 @@ class SplashViewController: UIViewController {
     private func callHomeScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             let homeVC = HomeViewController()
-            homeVC.modalTransitionStyle = .crossDissolve
-            homeVC.modalPresentationStyle = .fullScreen
-            self?.show(homeVC, sender: self)
+            self?.navigationController?.pushViewController(homeVC, animated: true)
         }
     }
 }

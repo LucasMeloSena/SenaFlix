@@ -12,41 +12,6 @@ enum MovieType {
     case topRated
 }
 
-protocol MovieManagerDelegate {
-    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie], _ movieType: MovieType)
-    func didHaveAnError(_ error: Error)
-}
-
-struct MovieResponse: Codable {
-    let page: Int
-    let results: [Results]
-    let total_pages: Int
-    let total_results: Int
-}
-
-struct Results: Codable {
-    let backdrop_path: String
-    let id: Int
-    let original_title: String
-    let overview: String
-    let poster_path: String
-    let adult: Bool
-    let title: String
-    let release_date: String
-    let original_language: String
-    let genre_ids: [Int]
-    let popularity: Double
-    let vote_average: Double
-    let vote_count: Int
-    let video: Bool
-}
-
-struct Movie {
-    let backdrop_path: String
-    let id: Int
-    let name: String
-}
-
 struct MovieManager {
     let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
     let baseImageUrl = "https://image.tmdb.org/t/p/w500"
@@ -62,6 +27,7 @@ struct MovieManager {
             else if response.data != nil {
                 if let movie = parseJSON(from: response.data!) {
                     delegate?.didUpdateData(self, movie, type)
+                    return
                 }
             }
         }
@@ -85,4 +51,83 @@ struct MovieManager {
             return nil
         }
     }
+}
+
+struct MovieDetailManager {
+    let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
+    let baseImageUrl = "https://image.tmdb.org/t/p/w500"
+    
+    func fetchMovieDetail(in url: String, from id: Int, completion: @escaping (MovieDetail?) -> Void) {
+        let request = CoreRequest(url: url, api_key: api_key)
+        request.fetchData { response in
+            if response.error != nil {
+                completion(nil)
+            }
+            if let data = response.data {
+                parseJSONMovieDetail(from: data, id) { movieDetail in
+                    if let movieInfo = movieDetail {
+                        completion(movieInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    func parseJSONMovieDetail(from data: Data, _ id: Int, completion: @escaping (MovieDetail?) -> Void) {
+        let videoUrl = "https://api.themoviedb.org/3/movie/\(id)/videos?language=pt-br&api_key="
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(MovieDetailResponse.self, from: data)
+            
+            var genres: [String] = []
+            for genre in decodedData.genres {
+                genres.append(genre.name)
+            }
+            let releaseDate = decodedData.release_date.components(separatedBy: "-")[0]
+            let originCountry = decodedData.origin_country[0]
+            let imageUrl = "\(baseImageUrl)\(decodedData.poster_path)"
+            
+            fetchMovieTrailer(in: videoUrl, from: id) { videoUrl in
+                if let videoUrl = videoUrl {
+                    let movieDetail = MovieDetail(name: decodedData.title, genres: genres, overview: decodedData.overview, releaseDate: releaseDate, country: originCountry, video_url: videoUrl, poster_url: imageUrl)
+                    completion(movieDetail)
+                } else {
+                    completion(nil)
+                }
+            }
+        } catch {
+            print(error)
+            completion(nil)
+        }
+    }
+    
+    func fetchMovieTrailer(in url: String, from id: Int, completion: @escaping (String?) -> Void) {
+        let request = CoreRequest(url: url, api_key: api_key)
+        request.fetchData { response in
+            if let error = response.error {
+                print("Error fetching movie trailer: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            else if let data = response.data {
+                let decoder = JSONDecoder()
+                do {
+                    let decodedData = try decoder.decode(MovieVideoResponse.self, from: data)
+                    guard let youtubeId = decodedData.results.first?.key else {
+                        completion(nil)
+                        return
+                    }
+                    let videoUrl = "https://www.youtube.com/watch?v=\(youtubeId)"
+                    completion(videoUrl)
+                } catch {
+                    print("Error decoding movie trailer response: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            } else {
+                print("Unexpected response without error or data")
+                completion(nil)
+            }
+        }
+    }
+    
 }

@@ -6,5 +6,6 @@ target 'SenaFlix' do
 
   # Pods for SenaFlix
   pod 'SnapKit'
+  pod 'Kingfisher', '~> 7.0'
 
 end

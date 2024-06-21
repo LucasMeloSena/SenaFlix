@@ -18,11 +18,10 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var stackViewTitlePoster: UIStackView = {
+    private lazy var stackViewMovies: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 10
+        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -31,39 +30,45 @@ class HomeViewController: UIViewController {
     
     //MARK: - ACTIONS
     var movieManager = MovieManager()
+    var popularMoviesStack: CoreStack!
+    var topRatedMoviesStack: CoreStack!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
         loadContraints()
+        
         movieManager.delegate = self
         requestMoviesData()
+        
+        navigationItem.titleView = labelGloboPlay
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func setup() {
         view.addSubview(containerView)
-        containerView.addSubview(labelGloboPlay)
-        containerView.addSubview(stackViewTitlePoster)
+        containerView.addSubview(stackViewMovies)
+        
+        popularMoviesStack = CoreStack(labelCategory: "Populares")
+        popularMoviesStack.delegate = self
+        topRatedMoviesStack = CoreStack(labelCategory: "Bem Avaliados")
+        topRatedMoviesStack.delegate = self
+        
+        stackViewMovies.addArrangedSubview(popularMoviesStack.getCurrentView())
+        stackViewMovies.addArrangedSubview(topRatedMoviesStack.getCurrentView())
     }
     
     private func loadContraints() {
         containerView.snp.makeConstraints {(make) -> Void in
-            make.leading.equalTo(0)
-            make.trailing.equalTo(0)
-            make.top.equalTo(0)
-            make.bottom.equalTo(0)
+            make.edges.equalToSuperview()
         }
         
-        labelGloboPlay.snp.makeConstraints { make in
-            make.top.equalTo(containerView.safeAreaLayoutGuide).offset(10)
-            make.centerX.equalToSuperview()
-        }
-        
-        stackViewTitlePoster.snp.makeConstraints { make in
-            make.top.equalTo(labelGloboPlay.snp_bottomMargin).offset(20)
-            make.leading.equalTo(10)
-            make.trailing.equalTo(0)
-            make.bottom.equalTo(0)
+        stackViewMovies.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaInsets).offset(80)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.trailing.bottom.equalToSuperview()
         }
     }
     
@@ -75,27 +80,40 @@ class HomeViewController: UIViewController {
         movieManager.fetchMovies(from: topRatedUrl, type: .topRated)
     }
     
-    private func populateView(movies: [Movie]) {
-        let coreStack = CoreStack(stackViewTitlePoster: stackViewTitlePoster, movies: movies)
-        coreStack.populateStackView()
+    private func populateView(movies: [Movie], for category: MovieType) {
+        switch category {
+        case .popular:
+            popularMoviesStack.movies = movies
+            popularMoviesStack.populateStackView()
+        case .topRated:
+            topRatedMoviesStack.movies = movies
+            topRatedMoviesStack.populateStackView()
+        }
     }
     
 }
 
-
+//MARK: - DELEGATE METHODS
 extension HomeViewController: MovieManagerDelegate {
     func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie], _ movieType: MovieType) {
-        if (movieType == .popular) {
-            print("Populares")
-            populateView(movies: movieModel)
-        }
-        else if (movieType == .topRated) {
-            print("Bem avaliados")
-            populateView(movies: movieModel)
-        }
+        populateView(movies: movieModel, for: movieType)
     }
     
     func didHaveAnError(_ error: any Error) {
         print("Error during getting movies, \(error)")
+    }
+}
+
+extension HomeViewController: CoreStackClickDelegate {
+    func handleClickStackItem(_ id: Int) {
+        let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
+        let movieDetailManager = MovieDetailManager()
+        movieDetailManager.fetchMovieDetail(in: url, from: id) { movie in
+            DispatchQueue.main.async {
+                let movieViewController = MovieViewController()
+                movieViewController.movie = movie
+                self.navigationController?.pushViewController(movieViewController, animated: true)
+            }
+        }
     }
 }

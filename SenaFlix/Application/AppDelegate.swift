@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let splashView = SplashViewController()
-        //let navigationController = UINavigationController(rootViewController: splashView)
-        window?.rootViewController = splashView
+        let navigationController = UINavigationController(rootViewController: splashView)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true
