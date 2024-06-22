@@ -12,6 +12,11 @@
 		ED12E1482C249C2200EAD298 /* MovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E1472C249C2200EAD298 /* MovieEntity.swift */; };
 		ED12E14B2C24A3F300EAD298 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E14A2C24A3F300EAD298 /* MovieViewController.swift */; };
 		ED12E14D2C24A40200EAD298 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E14C2C24A40200EAD298 /* MovieViewModel.swift */; };
+		ED201FD92C25BE7400412A54 /* CoreImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED201FD82C25BE7400412A54 /* CoreImageCard.swift */; };
+		ED201FDC2C25CBAE00412A54 /* MovieWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED201FDB2C25CBAE00412A54 /* MovieWidget.swift */; };
+		ED201FDE2C261D2500412A54 /* ButtonsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED201FDD2C261D2500412A54 /* ButtonsStack.swift */; };
+		ED201FE12C2633AF00412A54 /* CoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED201FE02C2633AF00412A54 /* CoreButton.swift */; };
+		ED201FE32C2656DD00412A54 /* OptionsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED201FE22C2656DD00412A54 /* OptionsStack.swift */; };
 		ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205C9A2C21BDB900C820E8 /* AppDelegate.swift */; };
 		ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED205C9C2C21BDB900C820E8 /* SceneDelegate.swift */; };
 		ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED205CA32C21BDB900C820E8 /* SenaFlix.xcdatamodeld */; };
@@ -40,6 +45,11 @@
 		ED12E1472C249C2200EAD298 /* MovieEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEntity.swift; sourceTree = "<group>"; };
 		ED12E14A2C24A3F300EAD298 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		ED12E14C2C24A40200EAD298 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		ED201FD82C25BE7400412A54 /* CoreImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageCard.swift; sourceTree = "<group>"; };
+		ED201FDB2C25CBAE00412A54 /* MovieWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieWidget.swift; sourceTree = "<group>"; };
+		ED201FDD2C261D2500412A54 /* ButtonsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsStack.swift; sourceTree = "<group>"; };
+		ED201FE02C2633AF00412A54 /* CoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreButton.swift; sourceTree = "<group>"; };
+		ED201FE22C2656DD00412A54 /* OptionsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsStack.swift; sourceTree = "<group>"; };
 		ED205C972C21BDB900C820E8 /* SenaFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenaFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED205C9A2C21BDB900C820E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED205C9C2C21BDB900C820E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,10 +97,37 @@
 		ED12E1492C24A3E500EAD298 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				ED201FDA2C25CADE00412A54 /* Widgets */,
 				ED12E14A2C24A3F300EAD298 /* MovieViewController.swift */,
 				ED12E14C2C24A40200EAD298 /* MovieViewModel.swift */,
 			);
 			path = Movie;
+			sourceTree = "<group>";
+		};
+		ED201FD72C25BE6400412A54 /* CoreImageCard */ = {
+			isa = PBXGroup;
+			children = (
+				ED201FD82C25BE7400412A54 /* CoreImageCard.swift */,
+			);
+			path = CoreImageCard;
+			sourceTree = "<group>";
+		};
+		ED201FDA2C25CADE00412A54 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				ED201FDB2C25CBAE00412A54 /* MovieWidget.swift */,
+				ED201FDD2C261D2500412A54 /* ButtonsStack.swift */,
+				ED201FE22C2656DD00412A54 /* OptionsStack.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		ED201FDF2C2633A200412A54 /* CoreButton */ = {
+			isa = PBXGroup;
+			children = (
+				ED201FE02C2633AF00412A54 /* CoreButton.swift */,
+			);
+			path = CoreButton;
 			sourceTree = "<group>";
 		};
 		ED205C8E2C21BDB900C820E8 = {
@@ -224,6 +261,8 @@
 		ED205CBC2C21C4B800C820E8 /* CoreUI */ = {
 			isa = PBXGroup;
 			children = (
+				ED201FDF2C2633A200412A54 /* CoreButton */,
+				ED201FD72C25BE6400412A54 /* CoreImageCard */,
 				EDBBB42D2C236F7D00209406 /* CoreStack */,
 				EDA679482C235E0F00DD8BE9 /* CoreLabel */,
 			);
@@ -408,8 +447,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED12E14B2C24A3F300EAD298 /* MovieViewController.swift in Sources */,
+				ED201FE32C2656DD00412A54 /* OptionsStack.swift in Sources */,
 				ED205CC02C21C82F00C820E8 /* HomeViewModel.swift in Sources */,
 				ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */,
+				ED201FD92C25BE7400412A54 /* CoreImageCard.swift in Sources */,
 				ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */,
 				EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */,
 				ED12E14D2C24A40200EAD298 /* MovieViewModel.swift in Sources */,
@@ -421,6 +462,9 @@
 				ED12E1482C249C2200EAD298 /* MovieEntity.swift in Sources */,
 				ED205CBE2C21C67E00C820E8 /* HomeViewController.swift in Sources */,
 				ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */,
+				ED201FDC2C25CBAE00412A54 /* MovieWidget.swift in Sources */,
+				ED201FE12C2633AF00412A54 /* CoreButton.swift in Sources */,
+				ED201FDE2C261D2500412A54 /* ButtonsStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Kingfisher
 import SnapKit
 
 protocol CoreStackClickDelegate {
@@ -106,22 +105,11 @@ class CoreStack {
             }
             
             DispatchQueue.main.async {
-                let imageView = UIImageView()
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.kf.setImage(with: url)
-                imageView.layer.cornerRadius = 10
-                imageView.layer.masksToBounds = true
-                
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageMovieTapped(_:)))
-                imageView.addGestureRecognizer(tapGesture)
-                imageView.isUserInteractionEnabled = true
-                imageView.tag = movie.id
-                
-                imageView.snp.makeConstraints {(make) -> Void in
-                    make.width.equalTo(150)
-                    make.height.equalTo(200)
+                let imageView = CoreImageCard(id: movie.id, url: url) { sender in
+                    if let id = sender.view?.tag {
+                        self.delegate?.handleClickStackItem(id)
+                    }
                 }
-                
                 self.stackViewPosters.addArrangedSubview(imageView)
             }
         }

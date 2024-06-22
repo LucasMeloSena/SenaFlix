@@ -78,12 +78,13 @@ struct Genres: Codable {
 }
 
 struct MovieDetail {
+    let id: Int
     let name: String
     let genres: [String]
     let overview: String
     let releaseDate: String
     let country: String
-    let video_url: String
+    let video_url: String?
     let poster_url: String
 }
 

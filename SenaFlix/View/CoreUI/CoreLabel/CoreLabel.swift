@@ -51,5 +51,6 @@ class CoreLabel: UILabel {
     
     func applyText() {
         self.text = content
+        self.numberOfLines = 0
     }
 }

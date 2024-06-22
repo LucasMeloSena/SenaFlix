@@ -61,6 +61,7 @@ struct MovieDetailManager {
         let request = CoreRequest(url: url, api_key: api_key)
         request.fetchData { response in
             if response.error != nil {
+                print("Error during getting movie data, \(response.error!)")
                 completion(nil)
             }
             if let data = response.data {
@@ -87,21 +88,18 @@ struct MovieDetailManager {
             let originCountry = decodedData.origin_country[0]
             let imageUrl = "\(baseImageUrl)\(decodedData.poster_path)"
             
-            fetchMovieTrailer(in: videoUrl, from: id) { videoUrl in
-                if let videoUrl = videoUrl {
-                    let movieDetail = MovieDetail(name: decodedData.title, genres: genres, overview: decodedData.overview, releaseDate: releaseDate, country: originCountry, video_url: videoUrl, poster_url: imageUrl)
-                    completion(movieDetail)
-                } else {
-                    completion(nil)
-                }
+            fetchMovieTrailer(in: videoUrl) { videoUrl in
+                let movieDetail = MovieDetail(id: decodedData.id, name: decodedData.title, genres: genres, overview: decodedData.overview, releaseDate: releaseDate, country: originCountry, video_url: videoUrl, poster_url: imageUrl)
+                completion(movieDetail)
+                
             }
         } catch {
-            print(error)
+            print("Error during decoding movie detail data, \(error)")
             completion(nil)
         }
     }
     
-    func fetchMovieTrailer(in url: String, from id: Int, completion: @escaping (String?) -> Void) {
+    func fetchMovieTrailer(in url: String, completion: @escaping (String?) -> Void) {
         let request = CoreRequest(url: url, api_key: api_key)
         request.fetchData { response in
             if let error = response.error {

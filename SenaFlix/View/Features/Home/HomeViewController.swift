@@ -108,11 +108,13 @@ extension HomeViewController: CoreStackClickDelegate {
     func handleClickStackItem(_ id: Int) {
         let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
         let movieDetailManager = MovieDetailManager()
-        movieDetailManager.fetchMovieDetail(in: url, from: id) { movie in
-            DispatchQueue.main.async {
-                let movieViewController = MovieViewController()
-                movieViewController.movie = movie
-                self.navigationController?.pushViewController(movieViewController, animated: true)
+        movieDetailManager.fetchMovieDetail(in: url, from: id) { data in
+            if let movie = data {
+                DispatchQueue.main.async {
+                    let movieViewController = MovieViewController()
+                    movieViewController.movie = movie
+                    self.navigationController?.pushViewController(movieViewController, animated: true)
+                }
             }
         }
     }
