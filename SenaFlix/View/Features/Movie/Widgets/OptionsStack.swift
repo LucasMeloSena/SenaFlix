@@ -13,7 +13,7 @@ class OptionsStack: UIStackView {
         super.init(frame: frame)
         
         setup()
-        loadConstraints()
+        applyStyle()
     }
     
     required init(coder: NSCoder) {
@@ -31,7 +31,7 @@ class OptionsStack: UIStackView {
         self.addArrangedSubview(labelDetails)
     }
     
-    private func loadConstraints() {
+    private func applyStyle() {
         self.axis = .horizontal
         self.distribution = .fill
         self.alignment = .leading

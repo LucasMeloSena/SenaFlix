@@ -36,6 +36,8 @@
 		EDA6795B2C23657C00DD8BE9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */; };
 		EDBBB42C2C236F6A00209406 /* CoreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42B2C236F6A00209406 /* CoreRequest.swift */; };
 		EDBBB42F2C236FA500209406 /* CoreStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42E2C236FA500209406 /* CoreStack.swift */; };
+		EDD16C482C27A4A500B9D317 /* DetailsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD16C472C27A4A500B9D317 /* DetailsStack.swift */; };
+		EDD16C4A2C27B45300B9D317 /* TrailerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD16C492C27B45300B9D317 /* TrailerWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		EDBBB42B2C236F6A00209406 /* CoreRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRequest.swift; sourceTree = "<group>"; };
 		EDBBB42E2C236FA500209406 /* CoreStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStack.swift; sourceTree = "<group>"; };
+		EDD16C472C27A4A500B9D317 /* DetailsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStack.swift; sourceTree = "<group>"; };
+		EDD16C492C27B45300B9D317 /* TrailerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerWidget.swift; sourceTree = "<group>"; };
 		EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenaFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +122,8 @@
 				ED201FDB2C25CBAE00412A54 /* MovieWidget.swift */,
 				ED201FDD2C261D2500412A54 /* ButtonsStack.swift */,
 				ED201FE22C2656DD00412A54 /* OptionsStack.swift */,
+				EDD16C472C27A4A500B9D317 /* DetailsStack.swift */,
+				EDD16C492C27B45300B9D317 /* TrailerWidget.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -451,8 +457,10 @@
 				ED205CC02C21C82F00C820E8 /* HomeViewModel.swift in Sources */,
 				ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */,
 				ED201FD92C25BE7400412A54 /* CoreImageCard.swift in Sources */,
+				EDD16C482C27A4A500B9D317 /* DetailsStack.swift in Sources */,
 				ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */,
 				EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */,
+				EDD16C4A2C27B45300B9D317 /* TrailerWidget.swift in Sources */,
 				ED12E14D2C24A40200EAD298 /* MovieViewModel.swift in Sources */,
 				ED205CC32C21D12100C820E8 /* SplashViewController.swift in Sources */,
 				ED205CC52C21D2FE00C820E8 /* Constants.swift in Sources */,

@@ -87,9 +87,10 @@ struct MovieDetailManager {
             let releaseDate = decodedData.release_date.components(separatedBy: "-")[0]
             let originCountry = decodedData.origin_country[0]
             let imageUrl = "\(baseImageUrl)\(decodedData.poster_path)"
+            let studio = decodedData.production_companies[0].name
             
             fetchMovieTrailer(in: videoUrl) { videoUrl in
-                let movieDetail = MovieDetail(id: decodedData.id, name: decodedData.title, genres: genres, overview: decodedData.overview, releaseDate: releaseDate, country: originCountry, video_url: videoUrl, poster_url: imageUrl)
+                let movieDetail = MovieDetail(id: decodedData.id, name: decodedData.title,  original_name: decodedData.original_title, genres: genres, overview: decodedData.overview, releaseDate: releaseDate, country: originCountry, video_url: videoUrl, poster_url: imageUrl, duration: decodedData.runtime, management: studio, budget: decodedData.budget, vote_average: decodedData.vote_average)
                 completion(movieDetail)
                 
             }

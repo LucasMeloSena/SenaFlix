@@ -7,5 +7,6 @@ target 'SenaFlix' do
   # Pods for SenaFlix
   pod 'SnapKit'
   pod 'Kingfisher', '~> 7.0'
+  pod 'youtube-ios-player-helper'
 
 end

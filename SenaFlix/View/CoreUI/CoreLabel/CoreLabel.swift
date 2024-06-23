@@ -12,6 +12,7 @@ enum LabelTypes {
     case title
     case subTitle
     case text
+    case textBold
     case slowText
 }
 
@@ -45,6 +46,8 @@ class CoreLabel: UILabel {
             self.font = UIFont(name: "Poppins-Regular", size: 16)
         case .slowText:
             self.font = UIFont(name: "Poppins-Regular", size: 14)
+        case .textBold:
+            self.font = UIFont(name: "Poppins-SemiBold", size: 16)
         }
         self.textColor = color
     }

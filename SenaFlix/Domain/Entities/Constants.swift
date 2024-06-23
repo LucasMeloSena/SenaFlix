@@ -14,5 +14,6 @@ struct K {
     
     struct appColors {
         static let black600: String = "black600"
+        static let gray300: String = "gray300"
     }
 }

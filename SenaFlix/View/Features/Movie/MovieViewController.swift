@@ -43,6 +43,34 @@ class MovieViewController: UIViewController {
     
     private lazy var movieOptions = OptionsStack()
     
+    private lazy var detailsStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var labelTechSheet = CoreLabel(type: .subTitle, color: .white, content: "Ficha Técnica")
+    
+    private lazy var originalName = DetailsStack(titleInfo: "Nome Original:", info: movie!.original_name)
+    
+    private lazy var genres = DetailsStack(titleInfo: "Gênero:", info: movie!.genres[0])
+    
+    private lazy var duration = DetailsStack(titleInfo: "Duração:", info: "\(movie!.duration)min")
+    
+    private lazy var releaseYear = DetailsStack(titleInfo: "Ano de Produção:", info: movie!.releaseDate.components(separatedBy: "-")[0])
+    
+    private lazy var country = DetailsStack(titleInfo: "País:", info: movie!.country)
+    
+    private lazy var management = DetailsStack(titleInfo: "Direção:", info: movie!.management)
+    
+    private lazy var budget = DetailsStack(titleInfo: "Custo:", info: "$\(movie!.budget)")
+    
+    private lazy var votes = DetailsStack(titleInfo: "Média de Votos:", info: String(movie!.vote_average))
+    
+    private lazy var trailer = TrailerWidget(videoUrl: movie?.video_url)
+    
     //MARK: - ACTIONS
     var movie: MovieDetail?
     
@@ -59,6 +87,17 @@ class MovieViewController: UIViewController {
         mainVerticalStack.addArrangedSubview(movieInfoStack)
         mainVerticalStack.addArrangedSubview(buttonsStack)
         mainVerticalStack.addArrangedSubview(movieOptions)
+        mainVerticalStack.addArrangedSubview(detailsStack)
+        detailsStack.addArrangedSubview(labelTechSheet)
+        detailsStack.addArrangedSubview(originalName)
+        detailsStack.addArrangedSubview(genres)
+        detailsStack.addArrangedSubview(duration)
+        detailsStack.addArrangedSubview(releaseYear)
+        detailsStack.addArrangedSubview(country)
+        detailsStack.addArrangedSubview(management)
+        detailsStack.addArrangedSubview(budget)
+        detailsStack.addArrangedSubview(votes)
+        detailsStack.addArrangedSubview(trailer)
     }
     
     private func setupNavigationController() {
@@ -93,6 +132,14 @@ class MovieViewController: UIViewController {
         movieOptions.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.leading.equalToSuperview().inset(20)
+        }
+        
+        detailsStack.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.9)
+        }
+        
+        trailer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }
