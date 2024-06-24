@@ -36,6 +36,9 @@
 		EDA6795B2C23657C00DD8BE9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */; };
 		EDBBB42C2C236F6A00209406 /* CoreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42B2C236F6A00209406 /* CoreRequest.swift */; };
 		EDBBB42F2C236FA500209406 /* CoreStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB42E2C236FA500209406 /* CoreStack.swift */; };
+		EDC04B282C28BE1A004F0488 /* CoreBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC04B272C28BE1A004F0488 /* CoreBottomBar.swift */; };
+		EDC04B2B2C28BE5B004F0488 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC04B2A2C28BE5B004F0488 /* FavoritesViewController.swift */; };
+		EDC04B2D2C28E441004F0488 /* MovieCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC04B2C2C28E441004F0488 /* MovieCards.swift */; };
 		EDD16C482C27A4A500B9D317 /* DetailsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD16C472C27A4A500B9D317 /* DetailsStack.swift */; };
 		EDD16C4A2C27B45300B9D317 /* TrailerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD16C492C27B45300B9D317 /* TrailerWidget.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +76,9 @@
 		EDA679522C23657C00DD8BE9 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		EDBBB42B2C236F6A00209406 /* CoreRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRequest.swift; sourceTree = "<group>"; };
 		EDBBB42E2C236FA500209406 /* CoreStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStack.swift; sourceTree = "<group>"; };
+		EDC04B272C28BE1A004F0488 /* CoreBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreBottomBar.swift; sourceTree = "<group>"; };
+		EDC04B2A2C28BE5B004F0488 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		EDC04B2C2C28E441004F0488 /* MovieCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCards.swift; sourceTree = "<group>"; };
 		EDD16C472C27A4A500B9D317 /* DetailsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStack.swift; sourceTree = "<group>"; };
 		EDD16C492C27B45300B9D317 /* TrailerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerWidget.swift; sourceTree = "<group>"; };
 		EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenaFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +130,7 @@
 				ED201FE22C2656DD00412A54 /* OptionsStack.swift */,
 				EDD16C472C27A4A500B9D317 /* DetailsStack.swift */,
 				EDD16C492C27B45300B9D317 /* TrailerWidget.swift */,
+				EDC04B2C2C28E441004F0488 /* MovieCards.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 		ED205CBB2C21C4AF00C820E8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				EDC04B292C28BE4C004F0488 /* Favorites */,
 				ED12E1492C24A3E500EAD298 /* Movie */,
 				ED205CC12C21D01A00C820E8 /* Splash */,
 				ED205CB52C21C11B00C820E8 /* Home */,
@@ -267,6 +275,7 @@
 		ED205CBC2C21C4B800C820E8 /* CoreUI */ = {
 			isa = PBXGroup;
 			children = (
+				EDC04B262C28BE02004F0488 /* CoreBottomBar */,
 				ED201FDF2C2633A200412A54 /* CoreButton */,
 				ED201FD72C25BE6400412A54 /* CoreImageCard */,
 				EDBBB42D2C236F7D00209406 /* CoreStack */,
@@ -320,6 +329,22 @@
 				EDBBB42E2C236FA500209406 /* CoreStack.swift */,
 			);
 			path = CoreStack;
+			sourceTree = "<group>";
+		};
+		EDC04B262C28BE02004F0488 /* CoreBottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				EDC04B272C28BE1A004F0488 /* CoreBottomBar.swift */,
+			);
+			path = CoreBottomBar;
+			sourceTree = "<group>";
+		};
+		EDC04B292C28BE4C004F0488 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				EDC04B2A2C28BE5B004F0488 /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		F77ED9DAB435372FE29B532F /* Pods */ = {
@@ -452,11 +477,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC04B2D2C28E441004F0488 /* MovieCards.swift in Sources */,
 				ED12E14B2C24A3F300EAD298 /* MovieViewController.swift in Sources */,
 				ED201FE32C2656DD00412A54 /* OptionsStack.swift in Sources */,
 				ED205CC02C21C82F00C820E8 /* HomeViewModel.swift in Sources */,
 				ED205C9B2C21BDB900C820E8 /* AppDelegate.swift in Sources */,
 				ED201FD92C25BE7400412A54 /* CoreImageCard.swift in Sources */,
+				EDC04B282C28BE1A004F0488 /* CoreBottomBar.swift in Sources */,
 				EDD16C482C27A4A500B9D317 /* DetailsStack.swift in Sources */,
 				ED205C9D2C21BDB900C820E8 /* SceneDelegate.swift in Sources */,
 				EDA6794A2C235E3900DD8BE9 /* CoreLabel.swift in Sources */,
@@ -471,6 +498,7 @@
 				ED205CBE2C21C67E00C820E8 /* HomeViewController.swift in Sources */,
 				ED205CA52C21BDB900C820E8 /* SenaFlix.xcdatamodeld in Sources */,
 				ED201FDC2C25CBAE00412A54 /* MovieWidget.swift in Sources */,
+				EDC04B2B2C28BE5B004F0488 /* FavoritesViewController.swift in Sources */,
 				ED201FE12C2633AF00412A54 /* CoreButton.swift in Sources */,
 				ED201FDE2C261D2500412A54 /* ButtonsStack.swift in Sources */,
 			);

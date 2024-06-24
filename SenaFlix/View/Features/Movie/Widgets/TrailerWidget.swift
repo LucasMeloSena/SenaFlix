@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 import youtube_ios_player_helper
 
 class TrailerWidget: UIView {
@@ -19,6 +20,7 @@ class TrailerWidget: UIView {
         
         setup()
         loadConstraints()
+        applyStyle()
         applyContent()
     }
     
@@ -29,6 +31,8 @@ class TrailerWidget: UIView {
     //MARK: - UI
     private lazy var youtubePlayer: YTPlayerView = {
         let youtubePlayer = YTPlayerView()
+        youtubePlayer.layer.masksToBounds = true
+        youtubePlayer.layer.cornerRadius = 15
         return youtubePlayer
     }()
     
@@ -38,7 +42,10 @@ class TrailerWidget: UIView {
     }
     
     private func loadConstraints() {
-        
+        youtubePlayer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(300)
+        }
     }
     
     private func getYoutubeId(from url: String) -> String {
@@ -52,6 +59,10 @@ class TrailerWidget: UIView {
         } else {
             print("No trailer provided.")
         }
+    }
+    
+    private func applyStyle() {
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

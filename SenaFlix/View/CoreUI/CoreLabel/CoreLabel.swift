@@ -17,7 +17,7 @@ enum LabelTypes {
 }
 
 class CoreLabel: UILabel {
-    let type: LabelTypes
+    var type: LabelTypes
     let color: UIColor
     let content: String
     
@@ -55,5 +55,10 @@ class CoreLabel: UILabel {
     func applyText() {
         self.text = content
         self.numberOfLines = 0
+    }
+    
+    func changeLabelWeight(type: LabelTypes) {
+        self.type = type
+        applyStyle()
     }
 }

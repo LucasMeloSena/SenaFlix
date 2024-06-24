@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     var movieManager = MovieManager()
     var popularMoviesStack: CoreStack!
     var topRatedMoviesStack: CoreStack!
+    var movies: [Movie]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,11 @@ class HomeViewController: UIViewController {
         
         navigationItem.titleView = labelGloboPlay
         self.navigationItem.setHidesBackButton(true, animated: true)
+        self.tabBarController?.selectedIndex = 1
+        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.barTintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .white
+        self.tabBarController?.tabBar.backgroundColor = .black.withAlphaComponent(0.3)
     }
     
     private func setup() {
@@ -89,6 +95,7 @@ class HomeViewController: UIViewController {
             topRatedMoviesStack.movies = movies
             topRatedMoviesStack.populateStackView()
         }
+        self.movies = movies
     }
     
 }
@@ -109,10 +116,11 @@ extension HomeViewController: CoreStackClickDelegate {
         let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
         let movieDetailManager = MovieDetailManager()
         movieDetailManager.fetchMovieDetail(in: url, from: id) { data in
-            if let movie = data {
+            if let movie = data, let lstMovies = self.movies {
                 DispatchQueue.main.async {
                     let movieViewController = MovieViewController()
                     movieViewController.movie = movie
+                    movieViewController.movies = lstMovies
                     self.navigationController?.pushViewController(movieViewController, animated: true)
                 }
             }

@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let splashView = SplashViewController()
-        let navigationController = UINavigationController(rootViewController: splashView)
-        window?.rootViewController = navigationController
+        //let splashView = SplashViewController()
+        //let navigationController = UINavigationController(rootViewController: splashView)
+        let tabView = CoreBottomBar()
+        window?.rootViewController = tabView
         window?.makeKeyAndVisible()
         
         return true

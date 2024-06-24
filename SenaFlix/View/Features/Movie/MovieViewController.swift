@@ -43,41 +43,22 @@ class MovieViewController: UIViewController {
     
     private lazy var movieOptions = OptionsStack()
     
-    private lazy var detailsStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    private lazy var labelTechSheet = CoreLabel(type: .subTitle, color: .white, content: "Ficha Técnica")
-    
-    private lazy var originalName = DetailsStack(titleInfo: "Nome Original:", info: movie!.original_name)
-    
-    private lazy var genres = DetailsStack(titleInfo: "Gênero:", info: movie!.genres[0])
-    
-    private lazy var duration = DetailsStack(titleInfo: "Duração:", info: "\(movie!.duration)min")
-    
-    private lazy var releaseYear = DetailsStack(titleInfo: "Ano de Produção:", info: movie!.releaseDate.components(separatedBy: "-")[0])
-    
-    private lazy var country = DetailsStack(titleInfo: "País:", info: movie!.country)
-    
-    private lazy var management = DetailsStack(titleInfo: "Direção:", info: movie!.management)
-    
-    private lazy var budget = DetailsStack(titleInfo: "Custo:", info: "$\(movie!.budget)")
-    
-    private lazy var votes = DetailsStack(titleInfo: "Média de Votos:", info: String(movie!.vote_average))
+    private lazy var compiledData = CompiledData(movie: movie)
     
     private lazy var trailer = TrailerWidget(videoUrl: movie?.video_url)
     
+    private lazy var alsoWatchMovieCards = MovieCards(movies: movies!)
+    
     //MARK: - ACTIONS
     var movie: MovieDetail?
+    var movies: [Movie]?
     
     override func viewDidLoad() {
         setup()
         loadConstraints()
         setupNavigationController()
+        
+        movieOptions.delegate = self
     }
     
     private func setup() {
@@ -87,17 +68,7 @@ class MovieViewController: UIViewController {
         mainVerticalStack.addArrangedSubview(movieInfoStack)
         mainVerticalStack.addArrangedSubview(buttonsStack)
         mainVerticalStack.addArrangedSubview(movieOptions)
-        mainVerticalStack.addArrangedSubview(detailsStack)
-        detailsStack.addArrangedSubview(labelTechSheet)
-        detailsStack.addArrangedSubview(originalName)
-        detailsStack.addArrangedSubview(genres)
-        detailsStack.addArrangedSubview(duration)
-        detailsStack.addArrangedSubview(releaseYear)
-        detailsStack.addArrangedSubview(country)
-        detailsStack.addArrangedSubview(management)
-        detailsStack.addArrangedSubview(budget)
-        detailsStack.addArrangedSubview(votes)
-        detailsStack.addArrangedSubview(trailer)
+        mainVerticalStack.addArrangedSubview(compiledData)
     }
     
     private func setupNavigationController() {
@@ -123,6 +94,7 @@ class MovieViewController: UIViewController {
             make.edges.equalTo(scrollView.contentLayoutGuide)
             make.width.equalTo(scrollView.frameLayoutGuide)
         }
+        mainVerticalStack.setCustomSpacing(50, after: buttonsStack)
         
         buttonsStack.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
@@ -134,15 +106,52 @@ class MovieViewController: UIViewController {
             make.leading.equalToSuperview().inset(20)
         }
         
-        detailsStack.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.9)
+        if movie?.video_url != nil {
+            compiledData.addArrangedSubview(trailer)
+            
+            trailer.snp.makeConstraints { make in
+                make.width.equalToSuperview()
+                make.height.equalTo(300)
+            }
         }
         
-        trailer.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        if mainVerticalStack.arrangedSubviews.contains(alsoWatchMovieCards) {
+            alsoWatchMovieCards.snp.makeConstraints { make in
+                make.width.equalToSuperview().multipliedBy(0.8)
+            }
+        }
+        else {
+            compiledData.snp.makeConstraints { make in
+                make.width.equalToSuperview().multipliedBy(0.9)
+            }
         }
     }
 }
 
 //MARK: - DELEGATE METHODS
-
+extension MovieViewController: MovieOptionsDelegate {
+    private func removeView(_ view: UIView) {
+        mainVerticalStack.removeArrangedSubview(view)
+        view.removeFromSuperview()
+        mainVerticalStack.setNeedsLayout()
+        mainVerticalStack.layoutIfNeeded()
+    }
+    
+    private func appendView(_ view: UIView) {
+        mainVerticalStack.addArrangedSubview(view)
+        mainVerticalStack.setNeedsLayout()
+        mainVerticalStack.layoutIfNeeded()
+        loadConstraints()
+    }
+    
+    func didOptionChanged(option: Options) {
+        switch option {
+        case .alsoWatch:
+            removeView(compiledData)
+            appendView(alsoWatchMovieCards)
+        case .details:
+            removeView(alsoWatchMovieCards)
+            appendView(compiledData)
+        }
+    }
+}
