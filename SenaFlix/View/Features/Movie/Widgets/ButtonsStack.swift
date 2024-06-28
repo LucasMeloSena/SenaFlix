@@ -25,7 +25,7 @@ class ButtonsStack: UIStackView {
     //MARK: - UI
     private lazy var watchButton = CoreButton(buttonBackgroundColor: .white, text: "Asssita", textColor: .black, buttonBorderColor: nil, iconName: "play.fill")
     
-    private lazy var detailsButton = CoreButton(buttonBackgroundColor: UIColor(named: K.appColors.black600)!, text: "Minha Lista", textColor: .white, buttonBorderColor: .gray, iconName: "star.fill")
+    lazy var detailsButton = CoreButton(buttonBackgroundColor: UIColor(named: K.appColors.black600)!, text: "Minha Lista", textColor: .white, buttonBorderColor: .gray, iconName: "star.fill")
     
     
     //MARK: - ACTIONS
@@ -52,5 +52,7 @@ class ButtonsStack: UIStackView {
         self.distribution = .fill
         self.spacing = 10
         self.isLayoutMarginsRelativeArrangement = false
+        
+        detailsButton.tag = 0
     }
 }

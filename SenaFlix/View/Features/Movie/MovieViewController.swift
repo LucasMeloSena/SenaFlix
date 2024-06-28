@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 import SnapKit
+import CoreData
+
+private enum ButtonState {
+    case Normal
+    case Favorite
+}
 
 class MovieViewController: UIViewController {
-    
     //MARK: - UI
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -52,13 +57,19 @@ class MovieViewController: UIViewController {
     //MARK: - ACTIONS
     var movie: MovieDetail?
     var movies: [Movie]?
-    
+    var coreDataManager = CoreDataController()
+    var favoriteMovies = [Favorites]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     override func viewDidLoad() {
         setup()
         loadConstraints()
         setupNavigationController()
         
         movieOptions.delegate = self
+        coreDataManager.delegate = self
+    
+        loadFavoriteMovies(buttonsStack.detailsButton)
     }
     
     private func setup() {
@@ -126,6 +137,54 @@ class MovieViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func favoritePressed(_ sender: UIButton) {
+        if (sender.tag == 0) {
+            changeButtonState(state: .Favorite, for: sender)
+            
+            let newItem = Favorites(context: self.context)
+            newItem.idMovie = Int32(movie!.id)
+            newItem.poster_url = movie!.poster_url
+            favoriteMovies.append(newItem)
+            coreDataManager.save(context)
+        }
+        else if (sender.tag == 1) {
+            changeButtonState(state: .Normal, for: sender)
+            let movieToRemove = favoriteMovies.first(where: { $0.idMovie == movie!.id })
+            if let removeMovie = movieToRemove {
+                favoriteMovies.removeAll(where: {$0.idMovie == movie!.id})
+                let movieId = removeMovie.objectID
+                coreDataManager.remove(context, from: movieId)
+            }
+        }
+    }
+    
+    private func changeButtonState(state: ButtonState, for sender: UIButton) {
+        if (state == .Normal) {
+            let image = UIImage(systemName: "star.fill")
+            sender.setTitle("Minha Lista", for: .normal)
+            sender.setImage(image, for: .normal)
+            sender.tag = 0
+        }
+        else if (state == .Favorite) {
+            let image = UIImage(systemName: "checkmark")
+            sender.setTitle("Adicionado", for: .normal)
+            sender.setImage(image, for: .normal)
+            sender.tag = 1
+        }
+    }
+    
+    private func loadFavoriteMovies(_ sender: UIButton) {
+        buttonsStack.detailsButton.addTarget(self, action: #selector(favoritePressed), for: UIControl.Event.touchUpInside)
+        
+        coreDataManager.loadItems(context)
+        
+        for favoriteMovie in favoriteMovies {
+            if (favoriteMovie.idMovie == movie!.id) {
+                changeButtonState(state: .Favorite, for: sender)
+            }
+        }
+    }
 }
 
 //MARK: - DELEGATE METHODS
@@ -153,5 +212,15 @@ extension MovieViewController: MovieOptionsDelegate {
             removeView(alsoWatchMovieCards)
             appendView(compiledData)
         }
+    }
+}
+
+extension MovieViewController: CoreDataControllerDelegate {
+    func loadFavoritesMovies(_ favoriteMovies: [Favorites]) {
+        self.favoriteMovies = favoriteMovies
+    }
+    
+    func removeMovieFromFavorites() {
+        
     }
 }
