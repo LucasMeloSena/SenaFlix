@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11E8B8C17C8706D0CD9D312F /* Pods_SenaFlix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDE2D1DC301F1C74D2F7DE6 /* Pods_SenaFlix.framework */; };
-		ED12E1462C249C0800EAD298 /* MovieProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E1452C249C0800EAD298 /* MovieProtocols.swift */; };
+		ED12E1462C249C0800EAD298 /* CoreProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E1452C249C0800EAD298 /* CoreProtocols.swift */; };
 		ED12E1482C249C2200EAD298 /* MovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E1472C249C2200EAD298 /* MovieEntity.swift */; };
 		ED12E14B2C24A3F300EAD298 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E14A2C24A3F300EAD298 /* MovieViewController.swift */; };
 		ED12E14D2C24A40200EAD298 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12E14C2C24A40200EAD298 /* MovieViewModel.swift */; };
@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		226CD7FF9DEF80C1D22D2590 /* Pods-SenaFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenaFlix.debug.xcconfig"; path = "Target Support Files/Pods-SenaFlix/Pods-SenaFlix.debug.xcconfig"; sourceTree = "<group>"; };
 		91129466F48C9FEF8C9C5F1F /* Pods-SenaFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenaFlix.release.xcconfig"; path = "Target Support Files/Pods-SenaFlix/Pods-SenaFlix.release.xcconfig"; sourceTree = "<group>"; };
-		ED12E1452C249C0800EAD298 /* MovieProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieProtocols.swift; sourceTree = "<group>"; };
+		ED12E1452C249C0800EAD298 /* CoreProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreProtocols.swift; sourceTree = "<group>"; };
 		ED12E1472C249C2200EAD298 /* MovieEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEntity.swift; sourceTree = "<group>"; };
 		ED12E14A2C24A3F300EAD298 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		ED12E14C2C24A40200EAD298 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		ED205CB72C21C33200C820E8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				ED12E1452C249C0800EAD298 /* MovieProtocols.swift */,
+				ED12E1452C249C0800EAD298 /* CoreProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				ED205CC32C21D12100C820E8 /* SplashViewController.swift in Sources */,
 				ED205CC52C21D2FE00C820E8 /* Constants.swift in Sources */,
 				EDBBB42C2C236F6A00209406 /* CoreRequest.swift in Sources */,
-				ED12E1462C249C0800EAD298 /* MovieProtocols.swift in Sources */,
+				ED12E1462C249C0800EAD298 /* CoreProtocols.swift in Sources */,
 				EDBBB42F2C236FA500209406 /* CoreStack.swift in Sources */,
 				EDFAD6AE2C2DDA1900DA06B6 /* CoreDataController.swift in Sources */,
 				ED12E1482C249C2200EAD298 /* MovieEntity.swift in Sources */,

@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol CoreStackClickDelegate {
-    func handleClickStackItem(_ id: Int)
-}
-
 class CoreStack {
     //MARK: - CONSTANTS
     var labelCatory: String
@@ -22,6 +18,7 @@ class CoreStack {
     init(labelCategory: String) {
         self.labelCatory = labelCategory
         setup()
+        loadConstraints()
     }
     
     func getCurrentView() -> UIView {
@@ -68,10 +65,12 @@ class CoreStack {
         stackViewTitlePoster.addArrangedSubview(labelCategory)
         stackViewTitlePoster.addArrangedSubview(scrollView)
         scrollView.addSubview(stackViewPosters)
-        
+    }
+    
+    private func loadConstraints() {
         stackViewTitlePoster.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(40)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
         }
@@ -85,7 +84,6 @@ class CoreStack {
             make.trailing.equalToSuperview()
             make.top.equalTo(labelCategory.snp.bottom).offset(10)
             make.bottom.equalToSuperview()
-            make.height.equalTo(300)
         }
         
         stackViewPosters.snp.makeConstraints { make in

@@ -18,6 +18,14 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isScrollEnabled = true
+        return scrollView
+    }()
+    
     private lazy var stackViewMovies: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -44,20 +52,13 @@ class HomeViewController: UIViewController {
         coreMoviesRequest.delegate = self
         coreMoviesRequest.requestMoviesData()
         
-        navigationItem.titleView = labelGloboPlay
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        self.tabBarController?.selectedIndex = 1
-        self.tabBarController?.tabBar.tintColor = .white
-        self.tabBarController?.tabBar.barTintColor = .white
-        self.tabBarController?.tabBar.unselectedItemTintColor = .white
-        self.tabBarController?.tabBar.backgroundColor = .black.withAlphaComponent(0.3)
-        
-        self.tabBarController?.tabBar.isHidden = false
+        setupNavigationAndTabBarControllers()
     }
     
     private func setup() {
         view.addSubview(containerView)
-        containerView.addSubview(stackViewMovies)
+        containerView.addSubview(scrollView)
+        scrollView.addSubview(stackViewMovies)
         
         popularMoviesStack = CoreStack(labelCategory: "Populares")
         popularMoviesStack.delegate = self
@@ -69,16 +70,34 @@ class HomeViewController: UIViewController {
     }
     
     private func loadContraints() {
-        containerView.snp.makeConstraints {(make) -> Void in
+        containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        stackViewMovies.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaInsets).offset(80)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.trailing.bottom.equalToSuperview()
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(containerView)
         }
+        
+        stackViewMovies.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+        }
+    }
+    
+    private func setupNavigationAndTabBarControllers() {
+        navigationItem.titleView = labelGloboPlay
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.tabBarController?.selectedIndex = 0
+        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.barTintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .white
+        self.tabBarController?.tabBar.backgroundColor = .black.withAlphaComponent(0.3)
+        
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithOpaqueBackground()
+        standardAppearance.backgroundColor = UIColor(named: K.appColors.black600)
+        self.navigationController?.navigationBar.standardAppearance = standardAppearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
     }
     
     private func populateView(movies: [Movie], for category: MovieType) {

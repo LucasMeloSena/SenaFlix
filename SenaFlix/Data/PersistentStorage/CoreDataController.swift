@@ -8,10 +8,6 @@
 import Foundation
 import CoreData
 
-protocol CoreDataControllerDelegate {
-    func loadFavoritesMovies(_ favoriteMovies: [Favorites])
-}
-
 class CoreDataController {
     var delegate: CoreDataControllerDelegate?
     

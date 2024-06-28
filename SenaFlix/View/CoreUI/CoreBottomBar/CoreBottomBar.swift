@@ -11,14 +11,9 @@ import UIKit
 class CoreBottomBar: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.viewControllers = [splash, homeTabBar, favoritesTabBar]
+        self.viewControllers = [homeTabBar, favoritesTabBar]
         applyStyle()
     }
-    
-    lazy public var splash: UINavigationController = {
-        let splash = SplashViewController()
-        return UINavigationController(rootViewController: splash)
-    }()
     
     lazy public var homeTabBar: UINavigationController = {
         let home = HomeViewController()
@@ -51,8 +46,6 @@ class CoreBottomBar: UITabBarController {
         standardAppearance.backgroundColor = UIColor(named: K.appColors.black600)
         self.tabBar.standardAppearance = standardAppearance
         self.tabBar.scrollEdgeAppearance = standardAppearance
-        
-        self.tabBarItem.imageInsets
     }
 }
 

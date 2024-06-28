@@ -13,10 +13,6 @@ enum Options {
     case details
 }
 
-protocol MovieOptionsDelegate {
-    func didOptionChanged(option: Options)
-}
-
 class OptionsStack: UIStackView {
     var delegate: MovieOptionsDelegate?
     

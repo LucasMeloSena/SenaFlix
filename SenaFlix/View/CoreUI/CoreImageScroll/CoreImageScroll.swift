@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol CoreImageScrollDelegate {
-    func handleClickStackItem(_ id: Int)
-}
-
 class CoreImageScroll: UIStackView {
     let movies: [Movie]
     var favoriteMovies: [Favorites]

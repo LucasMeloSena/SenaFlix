@@ -14,12 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        //let splashView = SplashViewController()
-        //let navigationController = UINavigationController(rootViewController: splashView)
-        let tabView = CoreBottomBar()
-        window?.rootViewController = tabView
+        let splashVC = SplashViewController()
+        let navigationController = UINavigationController(rootViewController: splashVC)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            let tabBarVC = CoreBottomBar()
+            self.window?.rootViewController = tabBarVC
+        }
         
         return true
     }

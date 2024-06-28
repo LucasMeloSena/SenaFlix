@@ -67,7 +67,7 @@ struct MovieDetailManager {
         request.fetchData { response in
             if response.error != nil {
                 print("Error during getting movie data, \(response.error!)")
-                completion(nil)
+                completion(nil) 
             }
             if let data = response.data {
                 parseJSONMovieDetail(from: data, id) { movieDetail in

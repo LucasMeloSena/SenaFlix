@@ -68,6 +68,7 @@ class MovieViewController: UIViewController {
         
         movieOptions.delegate = self
         coreDataManager.delegate = self
+        alsoWatchMovieCards.delegate = self
     
         loadFavoriteMovies(buttonsStack.detailsButton)
     }
@@ -219,5 +220,19 @@ extension MovieViewController: MovieOptionsDelegate {
 extension MovieViewController: CoreDataControllerDelegate {
     func loadFavoritesMovies(_ favoriteMovies: [Favorites]) {
         self.favoriteMovies = favoriteMovies
+    }
+}
+
+extension MovieViewController: CoreImageScrollDelegate {
+    func handleClickStackItem(_ id: Int) {
+        let coreMovieRequest = CoreMovieRequest()
+        coreMovieRequest.requestMovieData(from: id) { movie in
+            DispatchQueue.main.async {
+                let movieViewController = MovieViewController()
+                movieViewController.movie = movie
+                movieViewController.movies = self.movies
+                self.navigationController?.pushViewController(movieViewController, animated: true)
+            }
+        }
     }
 }

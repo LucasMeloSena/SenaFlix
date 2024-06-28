@@ -28,7 +28,6 @@ class SplashViewController: UIViewController {
     private func setup() {
         loadUI()
         loadConstraints()
-        callHomeScreen()
     }
     
     private func loadUI() {
@@ -48,12 +47,5 @@ class SplashViewController: UIViewController {
             imageView.widthAnchor.constraint(equalToConstant: 200),
             imageView.heightAnchor.constraint(equalToConstant: 200)
         ])
-    }
-    
-    private func callHomeScreen() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            let homeVC = HomeViewController()
-            self?.navigationController?.pushViewController(homeVC, animated: true)
-        }
     }
 }
