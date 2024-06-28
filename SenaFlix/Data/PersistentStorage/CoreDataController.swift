@@ -10,8 +10,6 @@ import CoreData
 
 protocol CoreDataControllerDelegate {
     func loadFavoritesMovies(_ favoriteMovies: [Favorites])
-    func removeMovieFromFavorites()
-    // talvez implementar este protocolo na tela de favoritos
 }
 
 class CoreDataController {
@@ -39,8 +37,6 @@ class CoreDataController {
             let objectToDelete = try context.existingObject(with: id)
             context.delete(objectToDelete)
             try context.save()
-            delegate?.removeMovieFromFavorites()
-            
         }
         catch {
             print("Error deleting favorite movie \(error)")

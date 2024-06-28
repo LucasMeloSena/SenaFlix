@@ -150,6 +150,7 @@ class MovieViewController: UIViewController {
         }
         else if (sender.tag == 1) {
             changeButtonState(state: .Normal, for: sender)
+            
             let movieToRemove = favoriteMovies.first(where: { $0.idMovie == movie!.id })
             if let removeMovie = movieToRemove {
                 favoriteMovies.removeAll(where: {$0.idMovie == movie!.id})
@@ -218,9 +219,5 @@ extension MovieViewController: MovieOptionsDelegate {
 extension MovieViewController: CoreDataControllerDelegate {
     func loadFavoritesMovies(_ favoriteMovies: [Favorites]) {
         self.favoriteMovies = favoriteMovies
-    }
-    
-    func removeMovieFromFavorites() {
-        
     }
 }

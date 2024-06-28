@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     var movieManager = MovieManager()
     var popularMoviesStack: CoreStack!
     var topRatedMoviesStack: CoreStack!
-    var movies: [Movie]?
+    var movies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,13 +89,22 @@ class HomeViewController: UIViewController {
     private func populateView(movies: [Movie], for category: MovieType) {
         switch category {
         case .popular:
+            populateLstMovies(movies: movies)
             popularMoviesStack.movies = movies
             popularMoviesStack.populateStackView()
         case .topRated:
+            populateLstMovies(movies: movies)
             topRatedMoviesStack.movies = movies
             topRatedMoviesStack.populateStackView()
         }
-        self.movies = movies
+    }
+    
+    private func populateLstMovies(movies: [Movie]) {
+        DispatchQueue.main.async {
+            for movie in movies {
+                self.movies.append(movie)
+            }
+        }
     }
     
 }
@@ -116,11 +125,11 @@ extension HomeViewController: CoreStackClickDelegate {
         let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
         let movieDetailManager = MovieDetailManager()
         movieDetailManager.fetchMovieDetail(in: url, from: id) { data in
-            if let movie = data, let lstMovies = self.movies {
+            if let movie = data {
                 DispatchQueue.main.async {
                     let movieViewController = MovieViewController()
                     movieViewController.movie = movie
-                    movieViewController.movies = lstMovies
+                    movieViewController.movies = self.movies
                     self.navigationController?.pushViewController(movieViewController, animated: true)
                 }
             }
