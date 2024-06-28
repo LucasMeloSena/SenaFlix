@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 
-class MovieCards: UIStackView {
+protocol CoreImageScrollDelegate {
+    func handleClickStackItem(_ id: Int)
+}
+
+class CoreImageScroll: UIStackView {
     let movies: [Movie]
     var favoriteMovies: [Favorites]
+    var delegate: CoreImageScrollDelegate?
     
     init(frame: CGRect = .zero, movies: [Movie] = [], favoriteMovies: [Favorites] = []) {
         self.movies = movies
@@ -18,7 +23,6 @@ class MovieCards: UIStackView {
         
         super.init(frame: frame)
         setup()
-        loadConstraints()
         applyStyle()
     }
     
@@ -37,13 +41,16 @@ class MovieCards: UIStackView {
                     currentRowStackView = UIStackView()
                     currentRowStackView!.axis = .horizontal
                     currentRowStackView!.spacing = 20
-                    currentRowStackView!.distribution = .fill
+                    currentRowStackView!.distribution = .fillEqually
                     currentRowStackView!.translatesAutoresizingMaskIntoConstraints = false
                     self.addArrangedSubview(currentRowStackView!)
                 }
                 if let url = URL(string: item.poster_url!) {
-                    let image = CoreImageCard(id: Int(item.idMovie), url: url, imageMovieTapped: nil)
+                    let image = CoreImageCard(id: Int(item.idMovie), url: url) { sender in
+                        self.delegate?.handleClickStackItem(Int(item.idMovie))
+                    }
                     currentRowStackView?.addArrangedSubview(image)
+                    addWidthConstraint(to: image)
                 }
             }
         }
@@ -53,27 +60,31 @@ class MovieCards: UIStackView {
                     currentRowStackView = UIStackView()
                     currentRowStackView!.axis = .horizontal
                     currentRowStackView!.spacing = 20
-                    currentRowStackView!.distribution = .fill
+                    currentRowStackView!.distribution = .fillEqually
                     currentRowStackView!.translatesAutoresizingMaskIntoConstraints = false
                     self.addArrangedSubview(currentRowStackView!)
                 }
                 if let url = URL(string: item.backdrop_path) {
-                    let image = CoreImageCard(id: item.id, url: url, imageMovieTapped: nil)
+                    let image = CoreImageCard(id: item.id, url: url) { sender in
+                        self.delegate?.handleClickStackItem(item.id)
+                    }
                     currentRowStackView?.addArrangedSubview(image)
+                    addWidthConstraint(to: image)
                 }
             }
         }
     }
     
-    private func loadConstraints() {
-        
+    private func addWidthConstraint(to view: UIView) {
+        view.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5, constant: -10).isActive = true
+        view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func applyStyle() {
         self.axis = .vertical
         self.translatesAutoresizingMaskIntoConstraints = false
         self.alignment = .fill
-        self.distribution = .fill
+        self.distribution = .fillEqually
         self.spacing = 20
     }
     
@@ -85,13 +96,16 @@ class MovieCards: UIStackView {
                 currentRowStackView = UIStackView()
                 currentRowStackView!.axis = .horizontal
                 currentRowStackView!.spacing = 20
-                currentRowStackView!.distribution = .fill
+                currentRowStackView!.distribution = .fillEqually
                 currentRowStackView!.translatesAutoresizingMaskIntoConstraints = false
                 self.addArrangedSubview(currentRowStackView!)
             }
             if let url = URL(string: item.poster_url!) {
-                let image = CoreImageCard(id: Int(item.idMovie), url: url, imageMovieTapped: nil)
+                let image = CoreImageCard(id: Int(item.idMovie), url: url) { sender in
+                    self.delegate?.handleClickStackItem(Int(item.idMovie))
+                }
                 currentRowStackView?.addArrangedSubview(image)
+                addWidthConstraint(to: image)
             }
         }
     }

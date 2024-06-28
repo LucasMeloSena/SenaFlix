@@ -22,6 +22,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     private func setup() {

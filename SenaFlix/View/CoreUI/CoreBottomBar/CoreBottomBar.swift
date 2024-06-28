@@ -51,6 +51,8 @@ class CoreBottomBar: UITabBarController {
         standardAppearance.backgroundColor = UIColor(named: K.appColors.black600)
         self.tabBar.standardAppearance = standardAppearance
         self.tabBar.scrollEdgeAppearance = standardAppearance
+        
+        self.tabBarItem.imageInsets
     }
 }
 

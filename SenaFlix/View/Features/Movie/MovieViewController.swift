@@ -52,7 +52,7 @@ class MovieViewController: UIViewController {
     
     private lazy var trailer = TrailerWidget(videoUrl: movie?.video_url)
     
-    private lazy var alsoWatchMovieCards = MovieCards(movies: movies!)
+    private lazy var alsoWatchMovieCards = CoreImageScroll(movies: movies!)
     
     //MARK: - ACTIONS
     var movie: MovieDetail?

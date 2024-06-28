@@ -15,18 +15,23 @@ enum MovieType {
 struct MovieManager {
     let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
     let baseImageUrl = "https://image.tmdb.org/t/p/w500"
-    var delegate: MovieManagerDelegate?
+    struct Retorno {
+        let movieManager: MovieManager?
+        let movieModel: [Movie]?
+        let movieType: MovieType?
+        let error: Error?
+    }
     
-    func fetchMovies(from baseUrl: String, type: MovieType) {
+    func fetchMovies(from baseUrl: String, type: MovieType, completion: @escaping (Retorno) -> Void) {
         let request = CoreRequest(url: baseUrl, api_key: api_key)
         request.fetchData() { response in
             if response.error != nil {
-                delegate?.didHaveAnError(response.error!)
+                completion(Retorno(movieManager: nil, movieModel: nil, movieType: nil, error: response.error!))
                 return
             }
             else if response.data != nil {
                 if let movie = parseJSON(from: response.data!) {
-                    delegate?.didUpdateData(self, movie, type)
+                    completion(Retorno(movieManager: self, movieModel: movie, movieType: type, error: nil))
                     return
                 }
             }
@@ -47,7 +52,7 @@ struct MovieManager {
             return movies
         }
         catch {
-            delegate?.didHaveAnError(error)
+            print("Error during parsing json in movies fetch, \(error)")
             return nil
         }
     }

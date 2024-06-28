@@ -37,3 +37,40 @@ struct CoreRequest {
         }
     }
 }
+
+struct CoreMovieRequest {
+    func requestMovieData(from id: Int, completion: @escaping (MovieDetail) -> Void) {
+        let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
+        let movieDetailManager = MovieDetailManager()
+        movieDetailManager.fetchMovieDetail(in: url, from: id) { data in
+            if let movie = data {
+                completion(movie)
+            }
+        }
+    }
+}
+
+struct CoreMoviesRequest {
+    var delegate: MovieManagerDelegate?
+    let movieManager = MovieManager()
+    
+    func requestMoviesData() {
+        let popularUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-br&page=1&api_key="
+        movieManager.fetchMovies(from: popularUrl, type: .popular) { data in
+            if (data.error != nil) {
+                delegate?.didHaveAnError(data.error!)
+                return
+            }
+            delegate?.didUpdateData(data.movieManager!, data.movieModel!, data.movieType!)
+        }
+        
+        let topRatedUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-br&page=1&api_key="
+        movieManager.fetchMovies(from: topRatedUrl, type: .topRated) { data in
+            if (data.error != nil) {
+                delegate?.didHaveAnError(data.error!)
+                return
+            }
+            delegate?.didUpdateData(data.movieManager!, data.movieModel!, data.movieType!)
+        }
+    }
+}

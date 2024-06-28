@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     
     //MARK: - ACTIONS
     var movieManager = MovieManager()
+    var coreMoviesRequest = CoreMoviesRequest()
     var popularMoviesStack: CoreStack!
     var topRatedMoviesStack: CoreStack!
     var movies = [Movie]()
@@ -40,8 +41,8 @@ class HomeViewController: UIViewController {
         setup()
         loadContraints()
         
-        movieManager.delegate = self
-        requestMoviesData()
+        coreMoviesRequest.delegate = self
+        coreMoviesRequest.requestMoviesData()
         
         navigationItem.titleView = labelGloboPlay
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -50,6 +51,8 @@ class HomeViewController: UIViewController {
         self.tabBarController?.tabBar.barTintColor = .white
         self.tabBarController?.tabBar.unselectedItemTintColor = .white
         self.tabBarController?.tabBar.backgroundColor = .black.withAlphaComponent(0.3)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func setup() {
@@ -78,14 +81,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func requestMoviesData() {
-        let popularUrl = "https://api.themoviedb.org/3/movie/popular?language=pt-br&page=1&api_key="
-        movieManager.fetchMovies(from: popularUrl, type: .popular)
-        
-        let topRatedUrl = "https://api.themoviedb.org/3/movie/top_rated?language=pt-br&page=1&api_key="
-        movieManager.fetchMovies(from: topRatedUrl, type: .topRated)
-    }
-    
     private func populateView(movies: [Movie], for category: MovieType) {
         switch category {
         case .popular:
@@ -106,7 +101,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
 }
 
 //MARK: - DELEGATE METHODS
@@ -116,22 +110,19 @@ extension HomeViewController: MovieManagerDelegate {
     }
     
     func didHaveAnError(_ error: any Error) {
-        print("Error during getting movies, \(error)")
+        print("Error during getting movies in HomwViewController, \(error)")
     }
 }
 
 extension HomeViewController: CoreStackClickDelegate {
     func handleClickStackItem(_ id: Int) {
-        let url = "https://api.themoviedb.org/3/movie/\(id)?language=pt-br&api_key="
-        let movieDetailManager = MovieDetailManager()
-        movieDetailManager.fetchMovieDetail(in: url, from: id) { data in
-            if let movie = data {
-                DispatchQueue.main.async {
-                    let movieViewController = MovieViewController()
-                    movieViewController.movie = movie
-                    movieViewController.movies = self.movies
-                    self.navigationController?.pushViewController(movieViewController, animated: true)
-                }
+        let coreMovieRequest = CoreMovieRequest()
+        coreMovieRequest.requestMovieData(from: id) { movie in
+            DispatchQueue.main.async {
+                let movieViewController = MovieViewController()
+                movieViewController.movie = movie
+                movieViewController.movies = self.movies
+                self.navigationController?.pushViewController(movieViewController, animated: true)
             }
         }
     }

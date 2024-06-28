@@ -38,15 +38,23 @@ class FavoritesViewController: UIViewController {
     
     private lazy var labelMyList = CoreLabel(type: .title, color: .white, content: "Minha Lista")
     
-    private var movieCards: MovieCards?
+    private var movieCards: CoreImageScroll?
+    
+    private lazy var labelNoFavorites = CoreLabel(type: .textBold, color: .white, content: "Não há nenhum filme favoritado!")
     
     //MARK: - ACTIONS
     var coreDataManager = CoreDataController()
+    var coreMoviesRequest = CoreMoviesRequest()
+    var movies = [Movie]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         coreDataManager.delegate = self
+        coreMoviesRequest.delegate = self
+        coreMoviesRequest.requestMoviesData()
+        
         setup()
         loadConstraints()
         applyStyle()
@@ -54,6 +62,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        movies = []
         coreDataManager.loadItems(context)
     }
     
@@ -92,12 +101,46 @@ class FavoritesViewController: UIViewController {
 //MARK: - DELEGATE METHODS
 extension FavoritesViewController: CoreDataControllerDelegate {
     func loadFavoritesMovies(_ favoriteMovies: [Favorites]) {
+        mainVerticalStack.removeArrangedSubview(labelNoFavorites)
+        labelNoFavorites.removeFromSuperview()
+        mainVerticalStack.setNeedsLayout()
+        mainVerticalStack.layoutIfNeeded()
+        
+        if (favoriteMovies.isEmpty) {
+            mainVerticalStack.addArrangedSubview(labelNoFavorites)
+        }
+        
         if movieCards == nil {
-            movieCards = MovieCards(favoriteMovies: favoriteMovies)
+            movieCards = CoreImageScroll(favoriteMovies: favoriteMovies)
             mainVerticalStack.addArrangedSubview(movieCards!)
         } else {
-            movieCards?.favoriteMovies = favoriteMovies
-            movieCards?.updateMovies()
+            movieCards!.favoriteMovies = favoriteMovies
+            movieCards!.updateMovies()
         }
+        movieCards?.delegate = self
+    }
+}
+
+extension FavoritesViewController: CoreImageScrollDelegate {
+    func handleClickStackItem(_ id: Int) {
+        let coreMovieRequest = CoreMovieRequest()
+        coreMovieRequest.requestMovieData(from: id) { movie in
+            DispatchQueue.main.async {
+                let movieViewController = MovieViewController()
+                movieViewController.movie = movie
+                movieViewController.movies = self.movies
+                self.navigationController?.pushViewController(movieViewController, animated: true)
+            }
+        }
+    }
+}
+
+extension FavoritesViewController: MovieManagerDelegate {
+    func didUpdateData(_ movieManager: MovieManager, _ movieModel: [Movie], _ movieType: MovieType) {
+        self.movies = movieModel
+    }
+    
+    func didHaveAnError(_ error: any Error) {
+        print("Error during getting movies in FavoritesViewController, \(error)")
     }
 }
