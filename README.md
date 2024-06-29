@@ -1,7 +1,7 @@
 # SenaFlix
 This project is an app about Globo's tech challenge for mobile developers.
 
-<video src="" width="100%" controls></video>
+<video src="https://github.com/LucasMeloSena/SenaFlix/assets/93053816/8c27d64b-8b30-401f-aae9-8f3d873dd197" width="100%" controls></video>
 
 ## 💻 Technologies used
 * [Swift:](https://developer.apple.com/swift/) Apple's powerful and intuitive programming language for iOS, macOS, watchOS, and tvOS.
