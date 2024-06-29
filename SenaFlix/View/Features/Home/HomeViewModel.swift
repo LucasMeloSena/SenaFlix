@@ -13,7 +13,7 @@ enum MovieType {
 }
 
 struct MovieManager {
-    let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
+    let api_key: String = ProcessInfo.processInfo.environment["API_KEY"] ?? ""
     let baseImageUrl = "https://image.tmdb.org/t/p/w500"
     struct Retorno {
         let movieManager: MovieManager?
@@ -59,7 +59,7 @@ struct MovieManager {
 }
 
 struct MovieDetailManager {
-    let api_key = "3b60eddacb7025e1b48c11803ffc00a6"
+    let api_key: String = ProcessInfo.processInfo.environment["API_KEY"] ?? ""
     let baseImageUrl = "https://image.tmdb.org/t/p/w500"
     
     func fetchMovieDetail(in url: String, from id: Int, completion: @escaping (MovieDetail?) -> Void) {
